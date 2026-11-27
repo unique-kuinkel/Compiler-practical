@@ -281,3 +281,49 @@ else:
             stack.extend([lhs, gotos[stack[-1]][lhs]])
 
     print("\nString Accepted!" if accepted else "\nString Rejected!")
+
+
+# Theory:
+# SLR(1) (Simple LR) Parser is a bottom-up parser used in compiler design to recognize the syntax of a given input string. It reads input from left to right and produces the rightmost derivation in reverse.
+# SLR(1) parsing uses a collection of LR(0) items and FOLLOW sets to construct a parsing table.
+# Important terms:
+# 1.	LR(0) Items: Productions with a dot (·) indicating how much of a production has been recognized.
+# o	Example: A → α · β
+# 2.	Closure: Adds productions of a non-terminal when the dot appears before that non-terminal.
+# 3.	Goto: Determines the next state after recognizing a grammar symbol.
+# 4.	ACTION Table: Specifies shift, reduce, accept, or error operations.
+# 5.	GOTO Table: Specifies the next state for a non-terminal.
+# Rules for constructing an SLR(1) parsing table:
+# 1.	Augment the grammar by adding a new start production S' → S.
+# 2.	Construct the canonical collection of LR(0) items using closure and GOTO functions.
+# 3.	For an item A → α · aβ, where a is a terminal, add a SHIFT action.
+# 4.	For an item A → α ·, add a REDUCE action for every terminal in FOLLOW(A).
+# 5.	For the item S' → S ·, add ACCEPT for the end marker $.
+# 6.	If conflicting actions occur in a table entry, the grammar is not SLR(1).
+# Example Grammar:
+# E → E + T | T
+# T → T * F | F
+# F → ( E ) | id
+# An SLR(1) parser uses the generated ACTION and GOTO tables to determine whether an input string belongs to the given grammar.
+# Algorithm:
+# A. Construction of SLR(1) Parsing Table
+# 1.	Start the program.
+# 2.	Read the grammar productions.
+# 3.	Augment the grammar with a new start production.
+# 4.	Calculate FIRST and FOLLOW sets.
+# 5.	Generate LR(0) item sets using closure and GOTO functions.
+# 6.	Construct the canonical collection of LR(0) states.
+# 7.	Build the ACTION table using shift, reduce, and accept operations.
+# 8.	Build the GOTO table for non-terminals.
+# 9.	Check for conflicts to determine whether the grammar is SLR(1).
+# 10.	Display the parsing table.
+# B. String Acceptance and Rejection
+# 1.	Read an input string.
+# 2.	Initialize the parsing stack with state 0.
+# 3.	Read the current input symbol.
+# 4.	Check the ACTION table for the current state and input symbol.
+# 5.	If the action is SHIFT, push the symbol and next state onto the stack.
+# 6.	If the action is REDUCE, pop the symbols and states corresponding to the production's right-hand side, then use the GOTO table.
+# 7.	If the action is ACCEPT, display "String Accepted".
+# 8.	If no valid action exists, display "String Rejected".
+# 9.	Stop the program.
