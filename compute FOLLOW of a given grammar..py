@@ -99,3 +99,41 @@ print("\nFOLLOW SETS")
 
 for nt in productions:
     print(f"FOLLOW({nt}) = {{ {', '.join(sorted(follow[nt]))} }}")
+
+# Theory:
+# In compiler design, FOLLOW is a function used in syntax analysis to determine the set of terminals that can appear immediately after a non-terminal in a sentential form.
+# The FOLLOW set is important in constructing predictive parsing tables and designing LL(1) parsers.
+# Rules for computing FOLLOW:
+# 1.	Add $ (end-of-input marker) to the FOLLOW set of the start symbol.
+# 2.	If a production contains A → αBβ, add FIRST(β), excluding ε, to FOLLOW(B).
+# 3.	If a production contains A → αB, add FOLLOW(A) to FOLLOW(B).
+# 4.	If A → αBβ and FIRST(β) contains ε, add FOLLOW(A) to FOLLOW(B).
+# 5.	Repeat the process until no more elements can be added.
+# Example:
+# Consider the following grammar:
+# E  → T E'
+# E' → + T E' | ε
+# T  → F T'
+# T' → * F T' | ε
+# F  → ( E ) | id
+# The FOLLOW sets are:
+# Non-terminal	FOLLOW
+# E	)$
+# E'	)$
+# T	+)$
+# T'	+)$
+# F	*+)$
+# Algorithm:
+# 1.	Start the program.
+# 2.	Read the grammar productions from the user.
+# 3.	Identify all non-terminals and initialize their FOLLOW sets as empty.
+# 4.	Add $ to the FOLLOW set of the start symbol.
+# 5.	Examine each production and locate its non-terminals.
+# 6.	For each non-terminal, find the symbols appearing after it.
+# 7.	Add FIRST of the following symbols, excluding ε, to its FOLLOW set.
+# 8.	If the following symbols can derive ε or no symbols follow the non-terminal, add FOLLOW of the left-hand side non-terminal.
+# 9.	Repeat the process until no more elements can be added.
+# 10.	Display the FOLLOW set of each non-terminal.
+# 11.	Stop the program.
+
+
