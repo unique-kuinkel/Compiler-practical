@@ -18,21 +18,26 @@ identifier = input("Enter an identifier: ")
 check_identifier(identifier)
 
 # Theory:
-# In compiler design, a comment is a part of source code that provides explanations or notes for programmers. Comments are ignored by the compiler during the compilation process.
-# Comments are generally classified into two types:
-# 1.	Single-line comment: Begins with # in Python and continues until the end of the line.
-# o	Syntax: # comment
-# o	Example: # This is a comment
-# 2.	Multi-line comment: Begins with /* and ends with */ in languages like C, C++, and Java.
-# o	Syntax: /* comment */
-# o	Example: /* This is a multi-line comment */
-# A string is considered a valid comment if it follows the proper opening and closing symbols.
+# An identifier is a name used to identify variables, functions, arrays, classes, and other user-defined elements in a program.
+# In compiler design, the lexical analyzer recognizes identifiers based on the rules defined by the programming language.
+# Rules for a valid identifier:
+# 1.	An identifier must begin with an alphabet (A–Z or a–z) or an underscore (_).
+# 2.	It can contain alphabets, digits (0–9), and underscores.
+# 3.	It cannot begin with a digit.
+# 4.	Spaces and special characters are not allowed.
+# 5.	Reserved keywords such as if, while, and int cannot be used as identifiers.
+# Syntax (Regular Expression):
+# ^[a-zA-Z_][a-zA-Z0-9_]*$
+# Examples:
+# •	Valid: name, _total, num123, student_name
+# •	Invalid: 123name, student name, first-name, int
 # Algorithm:
 # 1.	Start the program.
-# 2.	Read a string from the user.
-# 3.	Remove leading and trailing whitespace.
-# 4.	Check whether the string starts with #.
-# 5.	If not, check whether it starts with /* and ends with */.
-# 6.	If either condition is true, display "Valid Comment".
-# 7.	Otherwise, display "Invalid Comment".
-# 8.	Stop the program.
+# 2.	Read an identifier from the user.
+# 3.	Define a regular expression to check identifier syntax.
+# 4.	Check whether the identifier starts with a letter or underscore.
+# 5.	Check whether the remaining characters contain only letters, digits, or underscores.
+# 6.	Check whether the identifier is a reserved keyword.
+# 7.	If all conditions are satisfied, display "Valid Identifier".
+# 8.	Otherwise, display "Invalid Identifier".
+# 9.	Stop the program.
