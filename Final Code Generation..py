@@ -103,3 +103,33 @@ try:
 
 except (ValueError, IndexError) as error:
     print("Error:", error)
+
+# Theory:
+# Final Code Generation is the last phase of a compiler. It converts intermediate code into target machine code or assembly language instructions.
+# In this program, Three Address Code (TAC) is converted into simple assembly-like instructions.
+# For example, the intermediate code:
+# t1 = a + b
+# t2 = t1 * c
+# is converted into:
+# MOV R0, a
+# ADD R0, b
+# MOV t1, R0
+# MOV R0, t1
+# MUL R0, c
+# MOV t2, R0
+# Here:
+# •	MOV transfers data between memory locations and registers.
+# •	ADD performs addition.
+# •	SUB performs subtraction.
+# •	MUL performs multiplication.
+# •	DIV performs division.
+# Algorithm:
+# 1.	Start the program.
+# 2.	Read the number of intermediate code instructions.
+# 3.	Read each Three Address Code instruction.
+# 4.	Split each instruction into its result, operands, and operator.
+# 5.	Load the first operand into a register.
+# 6.	Generate the appropriate assembly instruction based on the operator.
+# 7.	Store the result in the destination variable.
+# 8.	Display the generated target code.
+
