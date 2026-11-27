@@ -269,3 +269,24 @@ try:
 
 except (SyntaxError, IndexError) as error:
     print("Invalid expression:", error)
+
+
+# Theory:
+# Intermediate Code Generation is a phase of a compiler that converts source code into an intermediate representation (IR) before generating the target machine code.
+# One common form of intermediate code is Three Address Code (TAC). In TAC, each instruction contains at most three addresses (two operands and one result).
+# For example, the expression:
+# a = b + c * d
+# is converted into:
+# t1 = c * d
+# t2 = b + t1
+# a = t2
+# Here, t1 and t2 are temporary variables used to store intermediate results.
+# Algorithm:
+# 1.	Start the program.
+# 2.	Read an arithmetic expression from the user.
+# 3.	Tokenize the expression into operands and operators.
+# 4.	Convert the expression into postfix notation while considering operator precedence.
+# 5.	Generate temporary variables for intermediate calculations.
+# 6.	Generate Three Address Code instructions.
+# 7.	Display the generated intermediate code.
+# 8.	Stop the program.
