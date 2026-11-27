@@ -359,3 +359,50 @@ else:
         print("\nString Accepted!")
     else:
         print("\nString Rejected!")
+
+# Theory:
+# LL(1) Parser is a top-down predictive parser used in compiler design to analyze the syntax of an input string.
+# The term LL(1) means:
+# •	First L: Scans the input from Left to right.
+# •	Second L: Produces a Leftmost derivation.
+# •	1: Uses one lookahead symbol to make parsing decisions.
+# An LL(1) parsing table is constructed using the FIRST and FOLLOW sets of a given grammar.
+# Rules for constructing an LL(1) parsing table:
+# 1.	For each production A → α, add the production to M[A, a] for every terminal a in FIRST(α), excluding ε.
+# 2.	If ε belongs to FIRST(α), add the production to M[A, b] for every symbol b in FOLLOW(A).
+# 3.	Empty table entries indicate syntax errors.
+# 4.	If any table entry contains more than one production, the grammar is not LL(1).
+# Parsing Process:
+# •	Initialize the stack with $ and the start symbol.
+# •	Compare the stack's top symbol with the current input symbol.
+# •	If both are terminals and match, pop the stack and advance the input.
+# •	If the stack top is a non-terminal, use the parsing table to select a production.
+# •	If the stack becomes empty and the input is completely consumed, the string is accepted.
+# •	Otherwise, the string is rejected.
+# Example Grammar:
+# E  → T X
+# X  → + T X | ε
+# T  → F Y
+# Y  → * F Y | ε
+# F  → ( E ) | id
+# Algorithm:
+# A. Construction of LL(1) Parsing Table
+# 1.	Start the program.
+# 2.	Read the grammar productions.
+# 3.	Calculate FIRST sets for all non-terminals.
+# 4.	Calculate FOLLOW sets for all non-terminals.
+# 5.	Create an empty parsing table.
+# 6.	For each production, insert it into the table using FIRST and FOLLOW rules.
+# 7.	Display the constructed LL(1) parsing table.
+# 8.	Check whether any table entry contains multiple productions.
+# B. String Acceptance and Rejection
+# 1.	Read an input string.
+# 2.	Initialize the parsing stack with $ and the start symbol.
+# 3.	Compare the stack top with the current input symbol.
+# 4.	If both symbols match, pop the stack and move to the next input symbol.
+# 5.	If the stack top is a non-terminal, use the parsing table to find the appropriate production.
+# 6.	Replace the non-terminal with the right-hand side of the production in reverse order.
+# 7.	If no valid production exists, reject the string.
+# 8.	If both stack and input reach $, accept the string.
+# 9.	Stop the program.
+
